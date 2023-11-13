@@ -42,7 +42,7 @@
 
       // https://stackoverflow.com/questions/11042212/ff-13-ie-9-json-stringify-geolocation-object
       function getLocation()  {
-          return new Promise((resolve, reject) => {
+          let coords = await new Promise((resolve, reject) => {
               if (navigator.geolocation) {
                   navigator.geolocation.getCurrentPosition((position) =>
                       resolve({
@@ -62,6 +62,7 @@
                   reject(new Error('Browser does not support geolocation!'));
               }
           });
+        return coords;
       }
       
       // ----------------------------------------------------
